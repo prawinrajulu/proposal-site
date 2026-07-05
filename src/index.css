@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #050510;
+  color: #f0e6f6;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Custom Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #050510; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e91e8c, #7c3aed);
+  border-radius: 3px;
+}
+
+/* ─── Selection ─────────────────────────────────────────── */
+::selection { background: rgba(233, 30, 140, 0.3); color: #fff; }
+
+/* ─── Glassmorphism Utility ─────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-rose {
+  background: rgba(233, 30, 140, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(233, 30, 140, 0.15);
+}
+
+.glass-gold {
+  background: rgba(212, 168, 83, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 168, 83, 0.2);
+}
+
+/* ─── Gradient Text ──────────────────────────────────────── */
+.gradient-text-rose {
+  background: linear-gradient(135deg, #f472b6, #e91e8c, #d4a853);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #d4a853, #ffd700, #f5cc7a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-purple {
+  background: linear-gradient(135deg, #a78bfa, #e91e8c, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glow Utilities ─────────────────────────────────────── */
+.glow-rose {
+  box-shadow: 0 0 30px rgba(233, 30, 140, 0.5), 0 0 60px rgba(233, 30, 140, 0.2);
+}
+.glow-gold {
+  box-shadow: 0 0 30px rgba(212, 168, 83, 0.5), 0 0 60px rgba(212, 168, 83, 0.2);
+}
+.glow-purple {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.5), 0 0 60px rgba(124, 58, 237, 0.2);
+}
+.text-glow-rose {
+  text-shadow: 0 0 30px rgba(233, 30, 140, 0.8), 0 0 60px rgba(233, 30, 140, 0.4);
+}
+.text-glow-gold {
+  text-shadow: 0 0 30px rgba(212, 168, 83, 0.8), 0 0 60px rgba(212, 168, 83, 0.4);
+}
+.text-glow-white {
+  text-shadow: 0 0 20px rgba(255,255,255,0.6), 0 0 40px rgba(255,255,255,0.3);
+}
+
+/* ─── Background Gradients ───────────────────────────────── */
+.bg-cinematic {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(59, 7, 100, 0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 10%, rgba(233, 30, 140, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(13, 27, 62, 0.5) 0%, transparent 70%),
+    linear-gradient(180deg, #050510 0%, #080820 50%, #050510 100%);
+}
+
+.bg-proposal {
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(233, 30, 140, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 50%, rgba(59, 7, 100, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 60%, rgba(13, 27, 62, 0.4) 0%, transparent 50%),
+    linear-gradient(180deg, #050510 0%, #060315 100%);
+}
+
+/* ─── Timeline Line ──────────────────────────────────────── */
+.timeline-line {
+  background: linear-gradient(180deg, transparent, #e91e8c, #7c3aed, #e91e8c, transparent);
+}
+
+/* ─── Shimmer Button ─────────────────────────────────────── */
+.btn-shimmer {
+  background-size: 200% auto;
+  background-image: linear-gradient(
+    90deg,
+    #e91e8c 0%,
+    #d4a853 25%,
+    #7c3aed 50%,
+    #d4a853 75%,
+    #e91e8c 100%
+  );
+  animation: shimmerBtn 3s linear infinite;
+}
+
+@keyframes shimmerBtn {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Polaroid Card ──────────────────────────────────────── */
+.polaroid {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 12px 40px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.polaroid:hover {
+  box-shadow: 0 25px 60px rgba(233, 30, 140, 0.3), 0 0 30px rgba(233, 30, 140, 0.1);
+}
+
+/* ─── Envelope ───────────────────────────────────────────── */
+.envelope-flap {
+  clip-path: polygon(0 0, 50% 60%, 100% 0);
+  transform-origin: top center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope-open .envelope-flap {
+  transform: rotateX(-180deg);
+}
+
+/* ─── Wax Seal ───────────────────────────────────────────── */
+@keyframes waxPop {
+  0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+  70% { transform: scale(1.15) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.wax-seal-enter {
+  animation: waxPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ─── Petal ──────────────────────────────────────────────── */
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(50vh) translateX(40px) rotate(180deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(110vh) translateX(80px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ─── Page Transition ────────────────────────────────────── */
+.page-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* ─── Typewriter Cursor ──────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #e91e8c;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+/* ─── Star Pulse ─────────────────────────────────────────── */
+@keyframes starPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.6); }
+}
+
+/* ─── Confetti Override ──────────────────────────────────── */
+#tsparticles canvas {
+  position: fixed !important;
+  pointer-events: none;
+}
+
+/* ─── Responsive Helpers ─────────────────────────────────── */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
