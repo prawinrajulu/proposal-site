@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import StarField from '../components/StarField';
 import FloatingParticles from '../components/FloatingParticles';
-import MusicToggle from '../components/MusicToggle';
 import NavDots from '../components/NavDots';
 import PageTransition from '../components/PageTransition';
 import { REASONS } from '../content';
@@ -63,7 +62,6 @@ export default function ReasonsILoveYou() {
       <div className="relative min-h-screen bg-cinematic overflow-x-hidden">
         <StarField count={150} showShootingStars />
         <FloatingParticles count={14} shapes={['❤', '♡', '✦']} />
-        <MusicToggle />
         <NavDots />
 
         {/* Glow accent */}

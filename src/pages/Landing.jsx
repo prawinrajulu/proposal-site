@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { ChevronDown, Sparkles } from 'lucide-react';
 import StarField from '../components/StarField';
 import FloatingParticles from '../components/FloatingParticles';
-import MusicToggle from '../components/MusicToggle';
 import PageTransition from '../components/PageTransition';
 import { NAMES, LANDING } from '../content';
 
@@ -33,7 +32,6 @@ export default function Landing() {
       <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-cinematic">
         <StarField count={220} showShootingStars />
         <FloatingParticles count={16} />
-        <MusicToggle />
 
         {/* Moon glow */}
         <div

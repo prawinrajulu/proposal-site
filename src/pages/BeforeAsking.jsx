@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import StarField from '../components/StarField';
 import FloatingParticles from '../components/FloatingParticles';
-import MusicToggle from '../components/MusicToggle';
 import NavDots from '../components/NavDots';
 import PageTransition from '../components/PageTransition';
 import { BEFORE_ASKING } from '../content';
@@ -63,7 +62,6 @@ export default function BeforeAsking() {
       <div className="relative min-h-screen bg-cinematic overflow-x-hidden flex flex-col items-center justify-center py-20 px-4">
         <StarField count={180} />
         <FloatingParticles count={10} shapes={['❤', '♡', '✦']} />
-        <MusicToggle />
         <NavDots />
 
         <div className="fixed inset-0 pointer-events-none"

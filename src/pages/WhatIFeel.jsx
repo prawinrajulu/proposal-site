@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import StarField from '../components/StarField';
 import FloatingParticles from '../components/FloatingParticles';
-import MusicToggle from '../components/MusicToggle';
 import NavDots from '../components/NavDots';
 import PageTransition from '../components/PageTransition';
 import { WHAT_I_FEEL } from '../content';
@@ -30,7 +29,6 @@ export default function WhatIFeel() {
       <div className="relative min-h-screen bg-cinematic overflow-hidden flex flex-col items-center justify-center py-24 px-4">
         <StarField count={180} showShootingStars />
         <FloatingParticles count={12} shapes={['✦', '✧', '·']} />
-        <MusicToggle />
         <NavDots />
 
         {/* Abstract Glowing Silhouette / Moon representation */}

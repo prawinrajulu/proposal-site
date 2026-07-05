@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import StarField from '../components/StarField';
 import FloatingParticles from '../components/FloatingParticles';
-import MusicToggle from '../components/MusicToggle';
 import NavDots from '../components/NavDots';
 import PageTransition from '../components/PageTransition';
 import { LITTLE_THINGS, NAMES } from '../content';
@@ -54,7 +53,6 @@ export default function LittleThings() {
       <div className="relative min-h-screen bg-cinematic overflow-x-hidden">
         <StarField count={150} showShootingStars />
         <FloatingParticles count={15} shapes={['❤', '♡', '✦']} />
-        <MusicToggle />
         <NavDots />
 
         <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-30"

@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import StarField from '../components/StarField';
 import FloatingParticles from '../components/FloatingParticles';
-import MusicToggle from '../components/MusicToggle';
 import NavDots from '../components/NavDots';
 import PageTransition from '../components/PageTransition';
 import { PROPOSAL, NAMES } from '../content';
@@ -174,7 +173,6 @@ export default function Proposal() {
         <StarField count={250} showShootingStars />
         <FloatingParticles count={20} shapes={['❤', '♡', '✦', '·']} />
         <RosePetals />
-        <MusicToggle />
         <NavDots />
 
         {/* Moonlight glow center */}

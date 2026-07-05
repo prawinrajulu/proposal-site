@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import LoadingScreen from './components/LoadingScreen';
+import MusicToggle from './components/MusicToggle';
 import Landing from './pages/Landing';
 import LittleThings from './pages/LittleThings';
 import WhatIFeel from './pages/WhatIFeel';
@@ -33,7 +34,12 @@ export default function App() {
           <LoadingScreen key="loading" onComplete={() => setLoaded(true)} />
         )}
       </AnimatePresence>
-      {loaded && <AnimatedRoutes />}
+      {loaded && (
+        <>
+          <MusicToggle />
+          <AnimatedRoutes />
+        </>
+      )}
     </BrowserRouter>
   );
 }
