@@ -75,6 +75,7 @@ function launchFireworks() {
 // Dodging "I Need A Moment" button
 function DodgeButton({ label }) {
   const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [hasMoved, setHasMoved] = useState(false);
   const clicks = useRef(0);
   const [surrendered, setSurrendered] = useState(false);
   const [tooltip, setTooltip] = useState('');
@@ -86,9 +87,18 @@ function DodgeButton({ label }) {
       setSurrendered(true);
       return;
     }
-    const x = (Math.random() - 0.5) * 220;
-    const y = (Math.random() - 0.5) * 100;
-    setPos({ x, y });
+    
+    const buttonWidth = 160;
+    const buttonHeight = 45;
+    const padding = 50;
+    
+    // Calculate random position in the viewport
+    const randomX = Math.random() * (window.innerWidth - buttonWidth - padding * 2) + padding;
+    const randomY = Math.random() * (window.innerHeight - buttonHeight - padding * 2) + padding;
+    
+    setPos({ x: randomX, y: randomY });
+    setHasMoved(true);
+    
     setTooltip(tooltips[clicks.current - 1] || 'Still thinking… ❤️');
     setTimeout(() => setTooltip(''), 1200);
   }, []);
@@ -96,28 +106,29 @@ function DodgeButton({ label }) {
   if (surrendered) return null;
 
   return (
-    <div className="relative">
+    <div className={hasMoved ? '' : 'relative'}>
       <motion.button
-        className="glass rounded-full px-6 py-3 font-sans text-sm text-white/50 tracking-widest hover:text-white/70 transition-colors duration-200"
-        animate={{ x: pos.x, y: pos.y }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        className={`${hasMoved ? 'fixed z-50' : 'relative'} glass rounded-full px-6 py-3 font-sans text-sm text-white/50 tracking-widest hover:text-white/70 transition-colors duration-200`}
+        style={hasMoved ? { left: `${pos.x}px`, top: `${pos.y}px` } : {}}
+        transition={{ type: 'spring', stiffness: 350, damping: 25 }}
         onHoverStart={dodge}
         whileTap={{ scale: 0.95 }}
       >
         {label}
+        
+        <AnimatePresence>
+          {tooltip && (
+            <motion.div
+              className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap font-romantic text-sm text-rose-soft bg-midnight-200/90 px-3 py-1 rounded-full pointer-events-none"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+            >
+              {tooltip}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.button>
-      <AnimatePresence>
-        {tooltip && (
-          <motion.div
-            className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap font-romantic text-sm text-rose-soft bg-midnight-200/90 px-3 py-1 rounded-full"
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-          >
-            {tooltip}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
