@@ -24,7 +24,7 @@ export default function MusicToggle() {
         1. Place an MP3 file in /public/music.mp3
         2. The button below will play/pause it
       */}
-      <audio ref={audioRef} loop src="/music.mp3" preload="none" />
+      <audio ref={audioRef} loop src="/bgmusic.mp3" preload="none" />
 
       <motion.button
         onClick={toggle}
