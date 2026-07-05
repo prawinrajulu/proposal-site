@@ -136,10 +136,31 @@ function DodgeButton({ label }) {
 export default function Proposal() {
   const navigate = useNavigate();
   const [answered, setAnswered] = useState(false);
+  const hasSentNotification = useRef(false);
 
   const handleYes = () => {
+    // Start celebration instantly
     setAnswered(true);
     launchFireworks();
+
+    // Send Telegram notification in background only once per session
+    if (!hasSentNotification.current) {
+      hasSentNotification.current = true;
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      
+      fetch(`${apiUrl}/api/proposal-accepted`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event: 'proposal_accepted',
+          timestamp: new Date().toISOString(),
+          source: 'proposal website'
+        })
+      })
+      .then(res => res.json())
+      .then(data => console.log('Notification status:', data))
+      .catch(err => console.error('Notification failed to send:', err));
+    }
   };
 
   return (
