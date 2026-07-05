@@ -146,7 +146,12 @@ export default function Proposal() {
     // Send Telegram notification in background only once per session
     if (!hasSentNotification.current) {
       hasSentNotification.current = true;
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL;
+      
+      if (!apiUrl) {
+        console.error('API Error: VITE_API_URL is not defined in the environment configuration.');
+        return;
+      }
       
       fetch(`${apiUrl}/api/proposal-accepted`, {
         method: 'POST',
