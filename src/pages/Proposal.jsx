@@ -111,6 +111,7 @@ function DodgeButton({ label }) {
         style={hasMoved ? { left: `${pos.x}px`, top: `${pos.y}px` } : {}}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
         onHoverStart={dodge}
+        onTouchStart={dodge}
         whileTap={{ scale: 0.95 }}
       >
         {label}
