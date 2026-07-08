@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import LoadingScreen from './components/LoadingScreen';
 import MusicToggle from './components/MusicToggle';
+import RoseAnimation from './components/RoseAnimation';
 import Landing from './pages/Landing';
 import LittleThings from './pages/LittleThings';
 import WhatIFeel from './pages/WhatIFeel';
@@ -37,9 +38,11 @@ export default function App() {
       {loaded && (
         <>
           <MusicToggle />
+          <RoseAnimation />
           <AnimatedRoutes />
         </>
       )}
     </BrowserRouter>
   );
 }
+

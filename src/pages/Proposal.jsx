@@ -142,6 +142,7 @@ export default function Proposal() {
     // Start celebration instantly
     setAnswered(true);
     launchFireworks();
+    window.dispatchEvent(new CustomEvent('proposal-accepted'));
 
     // Send Telegram notification in background only once per session
     if (!hasSentNotification.current) {

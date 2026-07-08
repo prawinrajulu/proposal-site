@@ -5,8 +5,8 @@
 // ============================================================
 
 export const NAMES = {
-  boyName: "Arjun",           // ← YOUR NAME
-  girlName: "Priya",          // ← HER NAME
+  boyName: "Dhinesh",           // ← YOUR NAME
+  girlName: "Devi Priya",          // ← HER NAME
 };
 
 // ─── HOME / OPENING PAGE ─────────────────────────────────────
